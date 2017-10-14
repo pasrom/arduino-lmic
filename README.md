@@ -80,7 +80,7 @@ g++ -DRASPBERRY_PI -DBCM2835_NO_DELAY_COMPATIBILITY -c -I../../.. spi_scan.c
 g++ spi_scan.o -lbcm2835  -o spi_scan
 root@pi03(rw):~/arduino-lmic/examples/raspi/spi_scan
 ```
-And run 
+And run (likely has to be done with root rights)
 ```shell
 root@pi03(rw):~/arduino-lmic/examples/raspi/spi_scan# ./spi_scan
 Checking register(0x42) with CS=GPIO06 => Nothing!
