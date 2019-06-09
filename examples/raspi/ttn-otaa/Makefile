@@ -4,7 +4,7 @@
 # http://www.airspayce.com/mikem/bcm2835/
 
 CC       = g++
-CFLAGS   = -std=c++11 -DRASPBERRY_PI -DBCM2835_NO_DELAY_COMPATIBILITY -D__BASEFILE__=\"$*\"
+CFLAGS   = -g3 -std=c++11 -DRASPBERRY_PI -DBCM2835_NO_DELAY_COMPATIBILITY -D__BASEFILE__=\"$*\"
 LIBS     = -lbcm2835
 LMICBASE = ../../../src
 INCLUDE  = -I$(LMICBASE) 
