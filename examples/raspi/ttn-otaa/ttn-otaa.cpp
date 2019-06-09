@@ -41,22 +41,22 @@
 
 // first. When copying an EUI from ttnctl output, this means to reverse
 // the bytes. For TTN issued EUIs the last bytes should be 0xD5, 0xB3,0x70.
-static const u1_t PROGMEM APPEUI[8]={ 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+static const u1_t PROGMEM APPEUI[8]={ 0x27, 0xA7, 0x01, 0xD0, 0x7E, 0xD5, 0xB3, 0x70 };
 void os_getArtEui (u1_t* buf) { memcpy_P(buf, APPEUI, 8);}
 
 // This should also be in little endian format, see above.
-static const u1_t PROGMEM DEVEUI[8]={ 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+static const u1_t PROGMEM DEVEUI[8]={ 0x44, 0x44, 0x44, 0x44, 0x44, 0x44, 0x44, 0x44 };
 // Here on Raspi we use part of MAC Address do define devEUI so 
 // This one above is not used, but you can still old method 
 // reverting the comments on the 2 following line
-//void os_getDevEui (u1_t* buf) { memcpy_P(buf, DEVEUI, 8);}
-void os_getDevEui (u1_t* buf) { getDevEuiFromMac(buf); }
+void os_getDevEui (u1_t* buf) { memcpy_P(buf, DEVEUI, 8);}
+//void os_getDevEui (u1_t* buf) { getDevEuiFromMac(buf); }
 
 // This key should be in big endian format (or, since it is not really a
 // number but a block of memory, endianness does not really apply). In
 // practice, a key taken from ttnctl can be copied as-is.
 // The key shown here is the semtech default key.
-static const u1_t PROGMEM APPKEY[16] = { 0x2B, 0x7E, 0x15, 0x16, 0x28, 0xAE, 0xD2, 0xA6, 0xAB, 0xF7, 0x15, 0x88, 0x09, 0xCF, 0x4F, 0x3C };
+static const u1_t PROGMEM APPKEY[16] = { 0x81, 0x0B, 0xDC, 0xFF, 0x29, 0x99, 0x6F, 0x74, 0x04, 0x2D, 0xB9, 0xDA, 0x9A, 0x09, 0x79, 0xEF };
 void os_getDevKey (u1_t* buf) {  memcpy_P(buf, APPKEY, 16);}
 
 static uint8_t mydata[] = "Raspi LMIC!";
@@ -79,10 +79,10 @@ volatile sig_atomic_t force_exit = 0;
 // Raspberri PI Lora Gateway for multiple modules 
 // see https://github.com/hallard/RPI-Lora-Gateway
 // Module 1 on board RFM95 868 MHz (example)
-#define RF_LED_PIN RPI_V2_GPIO_P1_07 // Led on GPIO4 so P1 connector pin #7
-#define RF_CS_PIN  RPI_V2_GPIO_P1_24 // Slave Select on CE0 so P1 connector pin #24
-#define RF_IRQ_PIN RPI_V2_GPIO_P1_22 // IRQ on GPIO25 so P1 connector pin #22
-#define RF_RST_PIN RPI_V2_GPIO_P1_29 // Reset on GPIO5 so P1 connector pin #29
+#define RF_LED_PIN RPI_V2_GPIO_P1_36 // Led on GPIO4 so P1 connector pin #7
+#define RF_CS_PIN  RPI_V2_GPIO_P1_22 // Slave Select on CE0 so P1 connector pin #24
+#define RF_IRQ_PIN RPI_V2_GPIO_P1_07 // IRQ on GPIO25 so P1 connector pin #22
+#define RF_RST_PIN RPI_V2_GPIO_P1_11 // Reset on GPIO5 so P1 connector pin #29
 
 
 // Dragino Raspberry PI hat (no onboard led)
